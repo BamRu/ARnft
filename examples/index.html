@@ -105,7 +105,7 @@
   margin-top: -7.5pc;">
   </button>
       <a
-          href="https://raw.githubusercontent.com/artoolkitx/artoolkit5/master/doc/Marker%20images/pinball.jpg"
+          href="./marker/wall.png"
           class="ui marker"
           target="_blank">
           🖼 Marker Image
@@ -115,7 +115,7 @@
 		<script src="../dist/ARnft.js"></script>
 
     <script>
-			ARnft.ARnft.init("examples/DataNFT/wall/wall_a1_10_300", 'config.json', true)
+			ARnft.ARnft.init("examples/DataNFT/wall/wall_a1_10_300", './config.json', true)
 			.then((nft) => {
 				nft.addModel('./Data/models/Duck/glTF/Duck.glb', 20, -70, 40, 80);
 			}).catch((error) => {
