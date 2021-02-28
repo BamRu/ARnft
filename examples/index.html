@@ -7,103 +7,7 @@
 	<link rel="stylesheet" href="./css/nft-style.css">
 </head>
 <body>
-<canvas id="photoCanvas"></canvas>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
-    <script src="ua-parser.min.js"></script>
-    <script src="FileSaver.js"></script>
-    <script src="canvas-toBlob.js"></script>
-
-    <script type="text/javascript">
-        var canvas;
-        var photoCanvas;
-        var video;
-        var PCContext;
-        var counter = 0;
-		var wp;
-		var hp;
-		var dx = 0;
-		var dy = 0;
-		var part = 16;
-		
-        var globalsSetup = false;
-        //setTimeout(setGlobals, 1200);
-
-        function setGlobals() {
-		
-		if(globalsSetup)
-		{
-			TakeScreenshotWrapper();
-		}
-		else
-		{
-			canvas = document.getElementById("canvas");
-			video = document.getElementById('video');
-
-			
-		
-			photoCanvas = document.getElementById("photoCanvas");
-			
-			photoCanvas.width = video.videoWidth;
-			photoCanvas.height = video.videoHeight;
-			
-			
-			PCContext = photoCanvas.getContext('2d');
-			globalsSetup = true;
-			TakeScreenshotWrapper();
-		}
-		}
-
-        function TakeScreenshot() {
-            PCContext.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
-            //PCContext.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
-			
-			dx = 0;
-			dy = 0;
-            //PCContext.drawImage(canvas, dx, dy, photoCanvas.width, photoCanvas.height);
-			
-		
-			wp=Math.trunc(document.documentElement.windowWidth/part);
-			hp=Math.trunc(document.documentElement.windowHeight/part);
-			
-			for (let i = 0; i < part; i++) { 
-				dy = i * hp; 
-				for (let j = 0; j < part; j++) { 
-					dx = j * wp; 
-					PCContext.drawImage(canvas, dx, dy, wp, hp,
-												dx, dy, wp, hp);
-				}
-			}
-	
-
-            photoCanvas.toBlob(function(blob) {
-                counter += 1;
-                saveAs(blob, "TestPhoto" + counter.toString());
-                canvas.style.visibility = "visible";
-            });
-        }
-
-
-        function TakeScreenshotWrapper() {
-            if (globalsSetup) {
-                canvas.style.visibility = "hidden";
-                setTimeout(TakeScreenshot, 200);
-            }
-        }
-    </script>
-
-    <button onclick="setGlobals()" style="outline: none; border: none; padding-top: none; padding-bottom: none; padding-left: none; padding-right: none;">
-  <img src="t2.png" style="
-  position: absolute;
-  z-index: 99999999;
-  width: 5pc;
-  height: 4pc;
-  left: 50%;
-  top: 100%;
-  margin-left: -2.5pc;
-  margin-top: -7.5pc;">
-  </button>
       <a
           href="https://raw.githubusercontent.com/artoolkitx/artoolkit5/master/doc/Marker%20images/pinball.jpg"
           class="ui marker"
@@ -114,10 +18,10 @@
 		<script src="./js/third_party/three.js/three.min.js"></script>
 		<script src="../dist/ARnft.js"></script>
 
-     <script>
-			ARnft.ARnft.init("examples/DataNFT/wall/wall_a1_10_300", './config.json', true)
+    <script>
+			ARnft.ARnft.init(640, 480, "examples/DataNFT/pinball", 'config.json', true)
 			.then((nft) => {
-				nft.addModel('./Data/models/Duck/glTF/Duck.glb', 20, -70, 40, 80);
+				nft.addModel('./Data/models/Duck/glTF/Duck.glb', 40, 80, 80, 80);
 			}).catch((error) => {
 				console.log(error);
 			});
