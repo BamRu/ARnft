@@ -52,12 +52,12 @@
         function TakeScreenshot() {
 
             //PCContext.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
-            PCContext.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
+            //PCContext.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
 
 			dx = 0;
 			dy = 0;
             //PCContext.drawImage(canvas, dx, dy, photoCanvas.width, photoCanvas.height);
-/*
+
 
 			wp=Math.trunc(document.documentElement.windowWidth/part);
 			hp=Math.trunc(document.documentElement.windowHeight/part);
@@ -70,7 +70,7 @@
 												dx, dy, wp, hp);
 				}
 			}
-*/	
+	
 			photoCanvas.toBlob(function(blob) {
                 counter += 1;
                 saveAs(blob, "Photo_test" + counter.toString());
@@ -105,7 +105,7 @@
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.410 photo
+          🖼 Marker Image ver 0.411 photo
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
