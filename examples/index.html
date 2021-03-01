@@ -66,8 +66,10 @@
 				dy = i * hp; 
 				for (let j = 0; j < part; j++) { 
 					dx = j * wp; 
-					PCContext.drawImage(canvas, dx, dy, wp, hp,
-												dx, dy, wp, hp);
+					canvas.onload = function(){
+						PCContext.drawImage(canvas, dx, dy, wp, hp,
+													dx, dy, wp, hp);
+					}
 				}
 			}
 	
@@ -105,7 +107,7 @@
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.412  photo
+          🖼 Marker Image ver 0.413  photo
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
