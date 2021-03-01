@@ -12,16 +12,16 @@
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.2
+          🖼 Marker Image ver 0.3
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
 		<script src="../dist/ARnft.js"></script>
 
     <script>
-			ARnft.ARnft.init(640, 480, "examples/DataNFT/wall/wall_a1_10_300", 'config.json', true)
+			ARnft.ARnft.init("examples/DataNFT/wall/wall_a1_10_300", 'config.json', true)
 			.then((nft) => {
-				nft.addModel('./Data/models/Duck/glTF/Duck.glb', 40, 80, 80, 80);
+				nft.addModel('./Data/models/Duck/glTF/Duck.glb', 20, -70, 40, 80);
 			}).catch((error) => {
 				console.log(error);
 			});
