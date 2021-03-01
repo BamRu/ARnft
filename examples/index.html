@@ -29,16 +29,12 @@
 		var dy = 0;
 		var part = 4;
 
-        var globalsSetup = false;
+        var globalsSetup = true;
         //setTimeout(setGlobals, 1200);
 
         function setGlobals() {
 
 		if(globalsSetup)
-		{
-			TakeScreenshotWrapper();
-		}
-		else
 		{
 			canvas = document.getElementById("canvas");
 			video = document.getElementById('video');
@@ -52,11 +48,12 @@
 
 
 			PCContext = photoCanvas.getContext('2d');
-			globalsSetup = true;
+			globalsSetup = false;
 		}
+
 			canvas.style.visibility = "hidden";
 		
-			//PCContext.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
+			PCContext.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
             PCContext.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
 
 			dx = 0;
@@ -102,7 +99,7 @@
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.404 photo
+          🖼 Marker Image ver 0.406 photo
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
@@ -111,7 +108,7 @@
     <script>
 			ARnft.ARnft.init(640, 480, "examples/DataNFT/wall/wall_a1_10_300", 'config.json', true)
 			.then((nft) => {
-				nft.addModel('./Data/models/Duck/glTF/Duck.glb', 40, 80, 80, 80);
+				nft.addModel('./Data/models/Duck/glTF/Duck.glb', 20, -70, 40, 80);
 			}).catch((error) => {
 				console.log(error);
 			});
