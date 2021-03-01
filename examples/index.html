@@ -46,11 +46,11 @@
 				PCContext = photoCanvas.getContext('2d');
 				globalsSetup = true;
 			}
-			TakeScreenshot();
+			TakeScreenshotWrapper();
 		}
 
         function TakeScreenshot() {
-		canvas.style.visibility = "hidden";
+
             PCContext.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
             PCContext.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
 
@@ -70,18 +70,22 @@
 												dx, dy, wp, hp);
 				}
 			}
-*/
-
-            photoCanvas.toBlob(function(blob) {
+*/	
+			photoCanvas.toBlob(function(blob) {
                 counter += 1;
-                saveAs(blob, "TestPhoto" + counter.toString());
+                saveAs(blob, "Photo_test" + counter.toString());
+                canvas.style.visibility = "visible";
             });
-			canvas.style.visibility = "visible";
+
+		}
+		
+		
+        function TakeScreenshotWrapper() {
+            if (globalsSetup) {
+                canvas.style.visibility = "hidden";
+                setTimeout(TakeScreenshot, 200);
+            }
         }
-
-
-        
-   
     </script>
 
     <button onclick="setGlobals()" style="outline: none; border: none; padding-top: none; padding-bottom: none; padding-left: none; padding-right: none;">
@@ -101,7 +105,7 @@
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.408 photo
+          🖼 Marker Image ver 0.409 photo
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
