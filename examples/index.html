@@ -8,89 +8,26 @@
 </head>
 <body>
 
-<canvas id="photoCanvas"></canvas>
+<script src="../dist/html2canvas.js"></script>
+	<script>
+	function screenshotChrome() {
+    var target = $(document.body);
+    html2canvas(target, {
+		useCORS: true
+		})
+	.then(function (canvas) {
+		canvas.UniversalToBlob(function (blob) {
+		saveAs(blob, "aScreenshot.png");
+		}, "image/png", 1);
+	})
+  .catch(function (err) { console.log(err); });
+	}
 
-
-
-    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
-    <script src="ua-parser.min.js"></script>
-    <script src="FileSaver.js"></script>
-    <script src="canvas-toBlob.js"></script>
-
-    <script type="text/javascript">
-        var canvas;
-        var photoCanvas;
-        var video;
-        var PCContext;
-        var counter = 0;
-		var wp;
-		var hp;
-		var dx = 0;
-		var dy = 0;
-		var part = 4;
-
-        var globalsSetup = true;
-        //setTimeout(setGlobals, 1200);
-
-        function setGlobals() 
-		{
-			if(globalsSetup)
-			{
-				canvas = document.getElementById("canvas");
-				video = document.getElementById('video');
-				photoCanvas = document.getElementById("photoCanvas");
 	
-				//photoCanvas.width = video.videoWidth;
-				//photoCanvas.height = video.videoHeight;
 	
-				PCContext = photoCanvas.getContext('2d');
-				globalsSetup = true;
-			}
-			TakeScreenshotWrapper();
-		}
+	</script>
 
-        function TakeScreenshot() {
-
-            PCContext.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
-            //PCContext.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
-
-			dx = 0;
-			dy = 0;
-            //PCContext.drawImage(canvas, dx, dy, photoCanvas.width, photoCanvas.height);
-
-
-			wp=Math.trunc(document.documentElement.windowWidth/part);
-			hp=Math.trunc(document.documentElement.windowHeight/part);
-
-			for (let i = 0; i < part; i++) { 
-				dy = i * hp; 
-				for (let j = 0; j < part; j++) { 
-					dx = j * wp; 
-					canvas.onload = function(){
-						PCContext.drawImage(canvas, dx, dy, wp, hp,
-													dx, dy, wp, hp);
-					}
-				}
-			}
-	
-			photoCanvas.toBlob(function(blob) {
-                counter += 1;
-                saveAs(blob, "Photo_test" + counter.toString());
-                canvas.style.visibility = "visible";
-            });
-
-		}
-		
-		
-        function TakeScreenshotWrapper() {
-            if (globalsSetup) {
-                canvas.style.visibility = "hidden";
-                setTimeout(TakeScreenshot, 200);
-            }
-        }
-    </script>
-
-    <button onclick="setGlobals()" style="outline: none; border: none; padding-top: none; padding-bottom: none; padding-left: none; padding-right: none;">
+    <button onclick="screenshotChrome()" style="outline: none; border: none; padding-top: none; padding-bottom: none; padding-left: none; padding-right: none;">
   <img src="t2.png" style="
   position: absolute;
   z-index: 99999999;
