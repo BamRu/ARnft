@@ -11,7 +11,7 @@
 <script src="../dist/html2canvas.js"></script>
 	<script>
 	function screenshotChrome() {
-    var target = $(document.body);
+    var target = document.getElementById("app");
     html2canvas(target, {
 		useCORS: true
 		})
@@ -44,7 +44,7 @@
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.5  photo
+          🖼 Marker Image ver 0.501  photo
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
