@@ -13,6 +13,33 @@
 <canvas id="photoCanvas"></canvas>
 <script>
 
+var userDeviceArray = [
+    {device: 'Android', platform: /Android/},
+    {device: 'iPhone', platform: /iPhone/},
+    {device: 'iPad', platform: /iPad/},
+    {device: 'Symbian', platform: /Symbian/},
+    {device: 'Windows Phone', platform: /Windows Phone/},
+    {device: 'Tablet OS', platform: /Tablet OS/},
+    {device: 'Linux', platform: /Linux/},
+    {device: 'Windows', platform: /Windows NT/},
+    {device: 'Macintosh', platform: /Macintosh/}
+];
+
+var platform = navigator.userAgent;
+
+function getPlatform() {
+    for (var i in userDeviceArray) {
+        if (userDeviceArray[i].platform.test(platform)) {
+            return userDeviceArray[i].device;
+        }
+    }
+    return 'Неизвестная платформа!' + platform;
+}
+
+console.log('Ваша платформа: ' + getPlatform());
+
+
+
 	var scrvid;
 	var app;
 	var rendCanvas;
@@ -105,7 +132,7 @@
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.542 screnim vse
+          🖼 Marker Image ver 0.543 screnim vse + if platform
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
