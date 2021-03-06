@@ -11,6 +11,7 @@
 <script src="../dist/html2canvas.js"></script>
 <script src="../dist/canvas2image.js"></script>
 <canvas id="photoCanvas"></canvas>
+<div id="123"></div>
 <script>
 
 var userDeviceArray = [
@@ -54,6 +55,12 @@ function getPlatform() {
 		photoCanvas.height = rendCanvas.height;
 		
 		retCtx = photoCanvas.getContext('2d');
+		
+		var SummDok = document.getElementById('123')		
+		var SummSumm=getPlatform;
+		SummDok.innerHTML = SummSumm;
+
+		
 		
 		if (getPlatform() == "iPhone" || getPlatform() == "iPad")
 		{
@@ -141,7 +148,7 @@ function getPlatform() {
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.548 screnim vse + if platform
+          🖼 Marker Image ver 0.549 screnim vse + if platform
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
