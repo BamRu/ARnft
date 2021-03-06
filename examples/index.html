@@ -11,8 +11,8 @@
 <script src="../dist/html2canvas.js"></script>
 <script src="../dist/canvas2image.js"></script>
 <canvas id="PhotoCanvas"></canvas>
-	<script>
-	
+<script>
+
 	var scrvid;
 	var app;
 	var rendCanvas;
@@ -21,29 +21,48 @@
 	var video;
 	
 	function genScreenshot() {
+		app = document.getElementById('app');
+		photoCanvas = document.getElementById("photoCanvas");
+		rendCanvas = document.getElementById("canvas");
+		
+		photoCanvas.width = rendCanvas.videoWidth;
+		photoCanvas.height = rendCanvas.videoHeight;
+		
+		retCtx = photoCanvas.getContext('2d');
+		
+		ScreenVideo();
+		ScreenModel();
+		Canvas2Image.saveAsPNG(photoCanvas);
+	}
+	
+	/*
+	function genScreenshot() {
 		html2canvas(document.getElementById('app'), {
 			onrendered: function(canvas) {
 				return Canvas2Image.saveAsPNG(canvas);
 			}
 		});
 	}
+*/
 
-	/*
-	function genScreenshot() {
-		app = document.getElementById('app');
-		photoCanvas = document.getElementById("photoCanvas");
-		rendCanvas = document.getElementById("canvas");
-		screen();
-	}*/
+	function ScreenModel() {
+		html2canvas(document.getElementById('app'), {
+			onrendered: function(canvas) {
+				retCtx.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
+				//return Canvas2Image.saveAsPNG(canvas);
+			}
+		});
+	}
+
 	
-	function screenvideo(){
+	function ScreenVideo(){
 		
 		scrvid = document.createElement('canvas');
 		scrvid.setAttribute( "id", "scrvid" );
 				
 		//app.append(scrvid);
 		
-		retCtx = scrvid.getContext('2d');
+		//retCtx = scrvid.getContext('2d');
 		
 		video = document.getElementById('video');
 		
@@ -54,8 +73,7 @@
 		
 		html2canvas(scrvid, {
 			onrendered: function(canvas) {
-				$('app').html();
-				//return Canvas2Image.saveAsPNG(canvas);
+				retCtx.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
 			}
 		});
 	}
@@ -86,7 +104,7 @@
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.523 unstable
+          🖼 Marker Image ver 0.53 unstable
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
