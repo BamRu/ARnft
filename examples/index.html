@@ -52,8 +52,7 @@
 	function screen(){
 		html2canvas(app, {
 			onrendered: function(canvas) {
-				$('app').html(1);
-				$('app').html(2);
+				$('app').html();
 				return Canvas2Image.saveAsPNG(canvas);
 			}
 		});
@@ -77,7 +76,7 @@
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.519 unstable
+          🖼 Marker Image ver 0.520 unstable
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
