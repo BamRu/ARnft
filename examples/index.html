@@ -7,20 +7,19 @@
 	<link rel="stylesheet" href="./css/nft-style.css">
 </head>
 <body>
-
+<script src="../dist/jquery-1.6.2.js"></script>
 <script src="../dist/html2canvas.js"></script>
+<script src="../dist/canvas2image.js"></script>
 	<script>
 	
 	function genScreenshot() {
 		html2canvas(document.body, {
 			onrendered: function(canvas) {
-				$('#box1').html("");
-				$('#box1').append(canvas);
-				}
-			});
+				return Canvas2Image.saveAsPNG(canvas);
+			}
+		});
 		//SaveScreen();
-		}
-	
+	}
 	</script>
 
     <button onclick="genScreenshot()" style="outline: none; border: none; padding-top: none; padding-bottom: none; padding-left: none; padding-right: none;">
@@ -54,7 +53,7 @@
 				console.log(error);
 			});
     </script>
-	<div style="visible:hidden;" id="box1"></div>
+	<div  id="box1" style="visible:hidden;"></div>
 </body>
 
 </html>
