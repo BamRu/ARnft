@@ -15,6 +15,7 @@
 	
 	var scrvid;
 	var app;
+	var rendCanvas;
 	var photoCanvas;
 	var retCtx;
 	var video;
@@ -22,6 +23,7 @@
 	function genScreenshot() {
 		app = document.getElementById('app');
 		photoCanvas = document.getElementById("photoCanvas");
+		rendCanvas = document.getElementById("canvas");
 		screen();
 	}
 	
@@ -50,7 +52,7 @@
 	}
 	
 	function screen(){
-		html2canvas(app, {
+		html2canvas(rendCanvas, {
 			onrendered: function(canvas) {
 				$('app').html();
 				return Canvas2Image.saveAsPNG(canvas);
@@ -76,7 +78,7 @@
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.520 unstable
+          🖼 Marker Image ver 0.521 unstable
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
