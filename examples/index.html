@@ -15,8 +15,7 @@
 	function genScreenshot() {
 		var scrvid = document.createElement('canvas');
 		scrvid.setAttribute( "id", "scrvid" );
-		scrvid.width = 640;
-		scrvid.height = 480;
+		
 		
 		var app = document.getElementById('app');
 		app.append(scrvid);
@@ -25,7 +24,10 @@
 		
 		var video = document.getElementById('video');
 		
-		retCtx.drawImage(video, 0, 0, 640, 480, 0, 0, 640, 480);
+		scrvid.width = video.width;
+		scrvid.height = video.height;
+		
+		retCtx.drawImage(video, 0, 0, scrvid.width, scrvid.height, 0, 0, scrvid.width, scrvid.height);
 		
 		html2canvas(document.getElementById('app'), {
 			onrendered: function(canvas) {
@@ -53,7 +55,7 @@
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.513 unstable
+          🖼 Marker Image ver 0.514 unstable
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
