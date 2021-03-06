@@ -14,7 +14,8 @@
 	
 	function genScreenshot() {
 		var scrvid = document.createElement('canvas');
-		td.setAttribute( "id", "scrvid" );
+		var video = document.getElementById('video');
+		scrvid.setAttribute( "id", "scrvid" );
 		var app = document.getElementById(app);
 		app.append(scrvid);
 		var retCtx = scrvid.getContext('2d');
@@ -47,7 +48,7 @@
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.510  unstable
+          🖼 Marker Image ver 0.512 unstable
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
