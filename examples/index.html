@@ -14,14 +14,19 @@
 	
 	function genScreenshot() {
 		var scrvid = document.createElement('canvas');
-		var video = document.getElementById('video');
 		scrvid.setAttribute( "id", "scrvid" );
-		var app = document.getElementById(app);
-		app.append(scrvid);
-		var retCtx = scrvid.getContext('2d');
 		scrvid.width = 640;
 		scrvid.height = 480;
+		
+		var app = document.getElementById(app);
+		app.append(scrvid);
+		
+		var retCtx = scrvid.getContext('2d');
+		
+		var video = document.getElementById('video');
+		
 		retCtx.drawImage(video, 0, 0, 640, 480, 0, 0, 640, 480);
+		
 		html2canvas(document.getElementById('app'), {
 			onrendered: function(canvas) {
 				$('app').html();
