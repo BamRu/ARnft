@@ -21,11 +21,20 @@
 	var video;
 	
 	function genScreenshot() {
+		html2canvas(document.getElementById('app'), {
+			onrendered: function(canvas) {
+				return Canvas2Image.saveAsPNG(canvas);
+			}
+		});
+	}
+
+	/*
+	function genScreenshot() {
 		app = document.getElementById('app');
 		photoCanvas = document.getElementById("photoCanvas");
 		rendCanvas = document.getElementById("canvas");
 		screen();
-	}
+	}*/
 	
 	function screenvideo(){
 		
@@ -52,7 +61,7 @@
 	}
 	
 	function screen(){
-		html2canvas(document.getElementById('canvas'), {
+		html2canvas(document.getElementById('app'), {
 			onrendered: function(canvas) {
 				return Canvas2Image.saveAsPNG(canvas);
 			}
@@ -77,7 +86,7 @@
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.522 unstable
+          🖼 Marker Image ver 0.523 unstable
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
