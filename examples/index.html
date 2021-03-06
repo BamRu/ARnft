@@ -46,7 +46,7 @@
 */
 
 	function ScreenModel() {
-		html2canvas(document.getElementById('app'), {
+		html2canvas(document.getElementById('canvas'), {
 			onrendered: function(canvas) {
 				retCtx.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
 				//return Canvas2Image.saveAsPNG(canvas);
@@ -104,7 +104,7 @@
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.532 unstable
+          🖼 Marker Image ver 0.533 unstable
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
