@@ -24,6 +24,7 @@
 		app = document.getElementById('app');
 		photoCanvas = document.getElementById("photoCanvas");
 		rendCanvas = document.getElementById("canvas");
+		video = document.getElementById('video');
 		
 		photoCanvas.width = 640;
 		photoCanvas.height = 480;
@@ -31,7 +32,7 @@
 		retCtx = photoCanvas.getContext('2d');
 		
 		retCtx.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
-        retCtx.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
+        retCtx.drawImage(rensCanvas, 0, 0, photoCanvas.width, photoCanvas.height);
 		
 		ScreenVideo();
 		ScreenModel();
@@ -65,8 +66,6 @@
 		//app.append(scrvid);
 		
 		//retCtx = scrvid.getContext('2d');
-		
-		video = document.getElementById('video');
 		
 		scrvid.width = 640;
 		scrvid.height = 480;
@@ -106,7 +105,7 @@
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.538 screnim vse
+          🖼 Marker Image ver 0.539 screnim vse
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
