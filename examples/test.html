@@ -1,0 +1,34 @@
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>test2</title>
+
+<script type="text/javascript" src="../dist/jquery-1.6.2.js"></script> 
+<script type="text/javascript" src="../dist/html2canvas.js"></script> 
+
+
+<script type="text/javascript">
+function genScreenshot() {
+    html2canvas(document.body, {
+		onrendered: function(canvas) {
+			$('#box1').html("");
+			$('#box1').append(canvas);
+			}
+		});
+	}
+</script>       
+
+</head>
+<body>
+<a href="javascript:genScreenshot()"> Get Screenshot</a>  
+<h1>Testing</h1>
+<h4>One column:</h4>
+<table border="1">
+<tr>
+  <td>100</td>
+</tr>
+</table>
+<div id="box1">
+</div>
+</body>
+</html>

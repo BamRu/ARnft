@@ -10,20 +10,16 @@
 
 <script src="../dist/html2canvas.js"></script>
 	<script>
-	function screenshotChrome() {
-    var target = document.getElementById("app");
-    html2canvas(target, {
-		useCORS: true
-		})
-	.then(function (canvas) {
-		canvas.UniversalToBlob(function (blob) {
-		saveAs(blob, "aScreenshot.png");
-		}, "image/png", 1);
-	})
-  .catch(function (err) { console.log(err); });
-	}
-
 	
+	function genScreenshot() {
+		html2canvas(document.body, {
+			onrendered: function(canvas) {
+				$('#box1').html("");
+				$('#box1').append(canvas);
+				}
+			});
+		//SaveScreen();
+		}
 	
 	</script>
 
@@ -44,7 +40,7 @@
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.502  photo
+          🖼 Marker Image ver 0.503  copy canvas
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
@@ -58,6 +54,7 @@
 				console.log(error);
 			});
     </script>
+	<div style="visible:hidden;" id="box1"></div>
 </body>
 
 </html>
