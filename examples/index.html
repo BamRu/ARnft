@@ -27,6 +27,10 @@
 		scrvid.width = video.width;
 		scrvid.height = video.height;
 		
+		screen();
+	}
+	function screen(){
+	
 		retCtx.drawImage(video, 0, 0, scrvid.width, scrvid.height, 0, 0, scrvid.width, scrvid.height);
 		
 		html2canvas(document.getElementById('app'), {
@@ -55,7 +59,7 @@
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.514 unstable
+          🖼 Marker Image ver 0.516 unstable
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
