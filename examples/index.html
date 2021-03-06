@@ -13,6 +13,9 @@
 	<script>
 	
 	function genScreenshot() {
+	
+		var app = document.getElementById(app);
+		app.append
 		var retCanvas = document.getElementById(vidscr);
 		var retCtx = retCanvas.getContext('2d');
 		retCanvas.width = 640;
@@ -20,7 +23,7 @@
 		retCtx.drawImage(video, 0, 0, 640, 480, 0, 0, 640, 480);
 		html2canvas(document.getElementById('app'), {
 			onrendered: function(canvas) {
-				$('app').html("<canvas id="vidscr"></canvas>");
+				$('app').html();
 				return Canvas2Image.saveAsPNG(canvas);
 			}
 		});
