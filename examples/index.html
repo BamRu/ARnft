@@ -15,8 +15,8 @@
 	function genScreenshot() {
 		var retCanvas = document.getElementById(vidscr);
 		var retCtx = retCanvas.getContext('2d');
-		retCanvas.width = width;
-		retCanvas.height = height;
+		retCanvas.width = 640;
+		retCanvas.height = 480;
 		retCtx.drawImage(video, 0, 0, 640, 480, 0, 0, 640, 480);
 		html2canvas(document.getElementById('app'), {
 			onrendered: function(canvas) {
@@ -44,7 +44,7 @@
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.508  unstable
+          🖼 Marker Image ver 0.509  unstable
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
