@@ -36,9 +36,6 @@ function getPlatform() {
     return 'Неизвестная платформа!' + platform;
 }
 
-console.log('Ваша платформа: ' + getPlatform());
-
-
 
 	var scrvid;
 	var app;
@@ -58,11 +55,24 @@ console.log('Ваша платформа: ' + getPlatform());
 		
 		retCtx = photoCanvas.getContext('2d');
 		
-		retCtx.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
-		ScreenVideo();
+		if(getPlatform() ="iPhone" || getPlatform() ="iPad")
+		{
+			retCtx.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
+			retCtx.drawImage(rendCanvas, 0, 0, photoCanvas.width, photoCanvas.height);
+		}
+		else
+		{
+			retCtx.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
+			ScreenModel();
+			
+		}
+		
+			//retCtx.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
+			//retCtx.drawImage(rendCanvas, 0, 0, photoCanvas.width, photoCanvas.height);
+		
+			//ScreenModel();
+			//ScreenVideo();
         
-		retCtx.drawImage(rendCanvas, 0, 0, photoCanvas.width, photoCanvas.height);
-		ScreenModel();
 		Canvas2Image.saveAsPNG(photoCanvas);
 	}
 	
@@ -132,7 +142,7 @@ console.log('Ваша платформа: ' + getPlatform());
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.543 screnim vse + if platform
+          🖼 Marker Image ver 0.544 screnim vse + if platform
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
