@@ -44,9 +44,6 @@ function getPlatform() {
 	var retCtx;
 	var video;
 	
-	var SummDok;
-	var SummSumm;
-	
 	function genScreenshot() {
 		app = document.getElementById('app');
 		photoCanvas = document.getElementById("photoCanvas");
@@ -58,21 +55,17 @@ function getPlatform() {
 		
 		retCtx = photoCanvas.getContext('2d');
 		
-		SummDok = document.getElementById('123')		
-		SummSumm=getPlatform();
 		screen();
 	}	
 	
 	function screen() {	
 		if (getPlatform() == "iPhone" || getPlatform() == 'Macintosh')
 		{
-			SummDok.innerHTML = SummSumm + "1";
-			retCtx.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
+			//retCtx.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
 			ScreenModel();
 		}
 		else
 		{
-			SummDok.innerHTML = SummSumm + "2";
 			retCtx.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
 			retCtx.drawImage(rendCanvas, 0, 0, photoCanvas.width, photoCanvas.height);
 		}
@@ -151,9 +144,9 @@ function getPlatform() {
       <a
           href="Data/wall.png"
           class="ui marker"
-          target="_blank"
-		  id="123">
-          🖼 Marker Image ver 0.557 screnim vse + if platform
+          target="_blank">
+          🖼 Marker Image ver 0.558
+		  screnim vse + if platform
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
