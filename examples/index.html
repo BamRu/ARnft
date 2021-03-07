@@ -62,7 +62,7 @@ function getPlatform() {
 	}	
 	
 	function screen() {	
-
+	photo = document.getElementById("photo");
 	/*
 		if (getPlatform() == "iPhone" || getPlatform() == 'Macintosh')
 		{
@@ -78,12 +78,14 @@ function getPlatform() {
 			//retCtx.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
 			//retCtx.drawImage(rendCanvas, 0, 0, photoCanvas.width, photoCanvas.height);
 		
-			//ScreenModel();
-			ScreenVideo();
+			ScreenModel();
+			window.open(photo.toDataURL("image/png"), "mywindow");
+			//ScreenVideo();
         
 			html2canvas(document.getElementById('photo'), {
 			onrendered: function(canvas) {
-				Canvas2Image.saveAsPNG(canvas);
+				window.open(canvas.toDataURL("image/png"), "mywindow");
+				//Canvas2Image.saveAsPNG(canvas);
 				//retCtx.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
 			}
 		});
@@ -93,9 +95,9 @@ function getPlatform() {
 	function ScreenModel() {
 		html2canvas(document.getElementById('canvas'), {
 			onrendered: function(canvas) {
-				photo.appendChild(canvas);
-				Canvas2Image.saveAsPNG(canvas);
-				//retCtx.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
+				window.open(canvas.toDataURL("image/png"), "mywindow");
+				//Canvas2Image.saveAsPNG(canvas);
+				document.getElementById('photo').appendChild(canvas);
 			}
 		});
 	}
@@ -105,26 +107,20 @@ function getPlatform() {
 		scrvid = document.createElement('canvas');
 		scrvid.setAttribute( "id", "scrvid" );
 				
-		//app.append(scrvid);
+		app.append(scrvid);
 		
-		//retCtx = scrvid.getContext('2d');
+		retCtx = scrvid.getContext('2d');
 		
 		scrvid.width = rendCanvas.width;
 		scrvid.height = rendCanvas.height;
 	
-		retCtx.drawImage(video, 0, 0);
-		
-		html2canvas(scrvid, {
-			onrendered: function(canvas) {
-				photo.appendChild(canvas);
-				Canvas2Image.saveAsPNG(canvas);
-				//retCtx.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
-			}
-		});
+		retCtx.drawImage(video, 0, 0, scrvid.width, scrvid.height, 0, 0, scrvid.width, scrvid.height);
 	}
-	
-	
 	/*
+	
+	
+	
+	
 	function ScreenVideo(){
 		
 		scrvid = document.createElement('canvas');
@@ -165,7 +161,7 @@ function getPlatform() {
 	}
 */
 	</script>
-    <button onclick="genScreenshot()" style="outline: none; border: none; padding-top: none; padding-bottom: none; padding-left: none; padding-right: none;">
+    <button onclick="screen()" style="outline: none; border: none; padding-top: none; padding-bottom: none; padding-left: none; padding-right: none;">
   <img src="t2.png" style="
   position: absolute;
   z-index: 99999999;
@@ -182,7 +178,7 @@ function getPlatform() {
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.562
+          🖼 Marker Image ver 0.563
 		  screnim video
       </a>
 
