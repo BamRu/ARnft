@@ -90,7 +90,7 @@ function getPlatform() {
 			//ScreenVideo();
 			ScreenModel();
 			
-			Canvas2Image.saveAsPNG(document.getElementById('photo'));
+			Canvas2Image.saveAsPNG(photo);
         
 			html2canvas(document.getElementById('photo'), {
 			onrendered: function(canvas) {
