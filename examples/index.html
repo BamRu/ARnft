@@ -11,6 +11,7 @@
 <script src="../dist/html2canvas.js"></script>
 <script src="../dist/canvas2image.js"></script>
 <canvas id="photoCanvas"></canvas>
+<div id="photo"></div>
 <script>
 
 var userDeviceArray = [
@@ -40,6 +41,7 @@ function getPlatform() {
 	var scrvid;
 	var app;
 	var rendCanvas;
+	var photo
 	var photoCanvas;
 	var retCtx;
 	var video;
@@ -49,7 +51,7 @@ function getPlatform() {
 		photoCanvas = document.getElementById("photoCanvas");
 		rendCanvas = document.getElementById("canvas");
 		video = document.getElementById('video');
-		
+		photo = document.getElementById("photo");
 		photoCanvas.width = rendCanvas.width;
 		photoCanvas.height = rendCanvas.height;
 		
@@ -59,6 +61,7 @@ function getPlatform() {
 	}	
 	
 	function screen() {	
+	/*
 		if (getPlatform() == "iPhone" || getPlatform() == 'Macintosh')
 		{
 			//retCtx.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
@@ -69,14 +72,52 @@ function getPlatform() {
 			retCtx.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
 			retCtx.drawImage(rendCanvas, 0, 0, photoCanvas.width, photoCanvas.height);
 		}
-		
+	*/	
 			//retCtx.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
 			//retCtx.drawImage(rendCanvas, 0, 0, photoCanvas.width, photoCanvas.height);
 		
-			//ScreenModel();
+			ScreenModel();
 			//ScreenVideo();
-        
+        /*
+			html2canvas(document.getElementById('photo'), {
+			onrendered: function(canvas) {
+				photo.appendChild(canvas);
+				//retCtx.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
+			}
+		});
+		*/
 		Canvas2Image.saveAsPNG(photoCanvas);
+	}
+	
+	function ScreenModel() {
+		html2canvas(document.getElementById('canvas'), {
+			onrendered: function(canvas) {
+				photo.appendChild(canvas);
+				//retCtx.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
+			}
+		});
+	}
+	
+	function ScreenVideo(){
+		
+		scrvid = document.createElement('canvas');
+		scrvid.setAttribute( "id", "scrvid" );
+				
+		//app.append(scrvid);
+		
+		//retCtx = scrvid.getContext('2d');
+		
+		scrvid.width = rendCanvas.width;
+		scrvid.height = rendCanvas.height;
+	
+		retCtx.drawImage(video, 0, 0, scrvid.width, scrvid.height, 0, 0, scrvid.width, scrvid.height);
+		
+		html2canvas(scrvid, {
+			onrendered: function(canvas) {
+				photo.appendChild(canvas);
+				//retCtx.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
+			}
+		});
 	}
 	
 	/*
@@ -87,15 +128,6 @@ function getPlatform() {
 			}
 		});
 	}
-
-	function ScreenModel() {
-		html2canvas(document.getElementById('app'), {
-			onrendered: function(canvas) {
-				retCtx.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
-			}
-		});
-	}
-
 	
 	function ScreenVideo(){
 		
@@ -145,8 +177,8 @@ function getPlatform() {
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.558
-		  screnim vse + if platform
+          🖼 Marker Image ver 0.559
+		  screnim model
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
