@@ -97,13 +97,14 @@ function getPlatform() {
 	}
 	
 	function ScreenModel() {
-		html2canvas(document.getElementById('canvas'), {
+		html2canvas(document.getElementById('app'), {
 			onrendered: function(canvas) {
-				Canvas2Image.saveAsPNG(canvas);
 				document.getElementById('photo').appendChild(canvas);
 				//canvas.setAttribute("id", "model");
 				retCtx = canvas.getContext('2d');
-				PCContext.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
+				retCtx.globalCompositeOperation="destination-over";
+				retCtx.drawImage(video, 0, 0);
+				Canvas2Image.saveAsPNG(canvas);
 				//retCtx.drawImage(document.createElement('model'), 0, 0, photoCanvas.width, photoCanvas.height);
 				
 			}
@@ -186,7 +187,7 @@ function getPlatform() {
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.568.t
+          🖼 Marker Image ver 0.569
 		  screnim video
       </a>
 
