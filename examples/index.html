@@ -105,9 +105,10 @@ function getPlatform() {
 		html2canvas(document.getElementById('canvas'), {
 			onrendered: function(canvas) {
 				document.getElementById('photo').appendChild(canvas);
-				canvas.setAttribute("id", "model");
-				retCtx.drawImage(document.createElement('model'), 0, 0, photoCanvas.width, photoCanvas.height);
+				//canvas.setAttribute("id", "model");
+				retCtx = canvas.getContext('2d');
 				Canvas2Image.saveAsPNG(photoCanvas);
+				//retCtx.drawImage(document.createElement('model'), 0, 0, photoCanvas.width, photoCanvas.height);
 				
 			}
 		});
