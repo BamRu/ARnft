@@ -52,6 +52,7 @@ function getPlatform() {
 		rendCanvas = document.getElementById("canvas");
 		video = document.getElementById('video');
 		photo = document.getElementById("photo");
+		
 		photoCanvas.width = rendCanvas.width;
 		photoCanvas.height = rendCanvas.height;
 		
@@ -61,6 +62,7 @@ function getPlatform() {
 	}	
 	
 	function screen() {	
+
 	/*
 		if (getPlatform() == "iPhone" || getPlatform() == 'Macintosh')
 		{
@@ -76,8 +78,8 @@ function getPlatform() {
 			//retCtx.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
 			//retCtx.drawImage(rendCanvas, 0, 0, photoCanvas.width, photoCanvas.height);
 		
-			ScreenModel();
-			//ScreenVideo();
+			//ScreenModel();
+			ScreenVideo();
         
 			html2canvas(document.getElementById('photo'), {
 			onrendered: function(canvas) {
@@ -92,6 +94,7 @@ function getPlatform() {
 		html2canvas(document.getElementById('canvas'), {
 			onrendered: function(canvas) {
 				photo.appendChild(canvas);
+				Canvas2Image.saveAsPNG(canvas);
 				//retCtx.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
 			}
 		});
@@ -114,20 +117,14 @@ function getPlatform() {
 		html2canvas(scrvid, {
 			onrendered: function(canvas) {
 				photo.appendChild(canvas);
+				Canvas2Image.saveAsPNG(canvas);
 				//retCtx.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
 			}
 		});
 	}
 	
-	/*
-	function genScreenshot() {
-		html2canvas(document.getElementById('app'), {
-			onrendered: function(canvas) {
-				return Canvas2Image.saveAsPNG(canvas);
-			}
-		});
-	}
 	
+	/*
 	function ScreenVideo(){
 		
 		scrvid = document.createElement('canvas');
@@ -149,6 +146,16 @@ function getPlatform() {
 		});
 	}
 	
+	function genScreenshot() {
+		html2canvas(document.getElementById('app'), {
+			onrendered: function(canvas) {
+				return Canvas2Image.saveAsPNG(canvas);
+			}
+		});
+	}
+	
+	
+	
 	function screen(){
 		html2canvas(document.getElementById('app'), {
 			onrendered: function(canvas) {
@@ -158,7 +165,6 @@ function getPlatform() {
 	}
 */
 	</script>
-
     <button onclick="genScreenshot()" style="outline: none; border: none; padding-top: none; padding-bottom: none; padding-left: none; padding-right: none;">
   <img src="t2.png" style="
   position: absolute;
@@ -176,8 +182,8 @@ function getPlatform() {
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.560
-		  screnim model
+          🖼 Marker Image ver 0.561
+		  screnim video
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
