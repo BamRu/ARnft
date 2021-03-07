@@ -90,7 +90,7 @@ function getPlatform() {
 			//ScreenVideo();
 			ScreenModel();
 			
-			Canvas2Image.saveAsPNG(photoCanvas);
+			//Canvas2Image.saveAsPNG(photoCanvas);
         
 			html2canvas(document.getElementById('photo'), {
 			onrendered: function(canvas) {
@@ -106,7 +106,7 @@ function getPlatform() {
 			onrendered: function(canvas) {
 				//window.open(canvas.toDataURL("image/png"), "mywindow");
 				retCtx.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
-				//Canvas2Image.saveAsPNG(canvas);
+				Canvas2Image.saveAsPNG(photoCanvas);
 				//document.getElementById('photo').appendChild(canvas);
 			}
 		});
@@ -188,7 +188,7 @@ function getPlatform() {
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.566.,j
+          🖼 Marker Image ver 0.566.,jh
 		  screnim video
       </a>
 
