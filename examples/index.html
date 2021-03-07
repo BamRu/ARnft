@@ -62,7 +62,6 @@ function getPlatform() {
 	}	
 	
 	function screen() {	
-	photo = document.getElementById("photo");
 	/*
 		if (getPlatform() == "iPhone" || getPlatform() == 'Macintosh')
 		{
@@ -81,13 +80,12 @@ function getPlatform() {
 			//retCtx.drawImage(rendCanvas, 0, 0, photoCanvas.width, photoCanvas.height);
 		
 			ScreenModel();
-			window.open(photo.toDataURL("image/png"), "mywindow");
+			
 			//ScreenVideo();
         
 			html2canvas(document.getElementById('photo'), {
 			onrendered: function(canvas) {
-				window.open(canvas.toDataURL("image/png"), "mywindow");
-				//Canvas2Image.saveAsPNG(canvas);
+				Canvas2Image.saveAsPNG(canvas);
 				//retCtx.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
 			}
 		});
@@ -97,8 +95,8 @@ function getPlatform() {
 	function ScreenModel() {
 		html2canvas(document.getElementById('canvas'), {
 			onrendered: function(canvas) {
-				window.open(canvas.toDataURL("image/png"), "mywindow");
-				//Canvas2Image.saveAsPNG(canvas);
+				//window.open(canvas.toDataURL("image/png"), "mywindow");
+				Canvas2Image.saveAsPNG(canvas);
 				document.getElementById('photo').appendChild(canvas);
 			}
 		});
@@ -180,7 +178,7 @@ function getPlatform() {
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.563.
+          🖼 Marker Image ver 0.564
 		  screnim video
       </a>
 
