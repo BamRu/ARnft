@@ -112,7 +112,7 @@ function getPlatform() {
 		scrvid.width = rendCanvas.width;
 		scrvid.height = rendCanvas.height;
 	
-		retCtx.drawImage(video, 0, 0, scrvid.width, scrvid.height, 0, 0, scrvid.width, scrvid.height);
+		retCtx.drawImage(video, 0, 0);
 		
 		html2canvas(scrvid, {
 			onrendered: function(canvas) {
@@ -182,7 +182,7 @@ function getPlatform() {
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.561
+          🖼 Marker Image ver 0.562
 		  screnim video
       </a>
 
