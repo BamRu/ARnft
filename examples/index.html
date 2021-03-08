@@ -104,9 +104,8 @@ function getPlatform() {
 				retCtx = photoCanvas.getContext('2d');
 				img = document.createElement('img');
 				img = Canvas2Image.convertToPNG(canvas,640,480);
-				img.download = "ima.png"
 				retCtx.drawImage(img,0,0)
-				//Canvas2Image.saveAsPNG(canvas);
+				Canvas2Image.saveAsPNG(photoCanvas);
 				retCtx.globalCompositeOperation="destination-over";
 				retCtx.drawImage(video, 0, 0);
 				//retCtx.drawImage(document.createElement('model'), 0, 0, photoCanvas.width, photoCanvas.height);
@@ -191,7 +190,7 @@ function getPlatform() {
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.572d
+          🖼 Marker Image ver 0.573
 		  screnim video
       </a>
 
