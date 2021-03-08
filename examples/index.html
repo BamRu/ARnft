@@ -101,8 +101,8 @@ function getPlatform() {
 			onrendered: function(canvas) {
 				//document.getElementById('photo').appendChild(canvas);
 				//canvas.setAttribute("id", "model");
-				retCtx = photoCanvas.getContext('2d');
 				Canvas2Image.saveAsPNG(canvas);
+				retCtx = photoCanvas.getContext('2d');
 				img = document.createElement('img');
 				img = Canvas2Image.convertToPNG(canvas,640,480);
 				retCtx.drawImage(img,0,0)
@@ -190,7 +190,7 @@ function getPlatform() {
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.573t.
+          🖼 Marker Image ver 0.573tt
 		  screnim video
       </a>
 
