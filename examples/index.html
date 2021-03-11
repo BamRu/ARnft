@@ -248,7 +248,7 @@ function getPlatform() {
 	
 		html2canvas(document.getElementById('app'), {
 			onrendered: function(canvas) {	
-				retCtx.globalCompositeOperation="destination-over";			
+				//retCtx.globalCompositeOperation="destination-over";			
 				PCContext.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height, 0, 0, photoCanvas.width, photoCanvas.height);
 				Canvas2Image.saveAsPNG(photoCanvas);
 				$('#box1').html("");
