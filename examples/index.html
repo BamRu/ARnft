@@ -21,7 +21,7 @@
 	var retCtx;
 	
 	function InitGlob{
-		if(glob)
+		if(glob == true`)
 		{
 			TakeScreenshot();
 		}
@@ -35,7 +35,7 @@
 			photoCanvas.width = canvas.width;
 			photoCanvas.height = canvas.height; 
 		
-			retCtx = scrvid.getContext('2d');
+			retCtx = photoCanvas.getContext('2d');
 			glob = true;
 			TakeScreenshot();
 		}
@@ -46,15 +46,11 @@
 		retCtx.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
 		retCtx.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
 
+		var data = new Date();
+	
+		Canvas2Image.saveAsPNG(photoCanvas);
+		canvas.style.visibility = "visible";
 
-		photoCanvas.toBlob(function(blob) {
-			counter += 1;
-		
-			var data = new Date();
-		
-			saveAs(blob, "Test_photo" + data;
-			canvas.style.visibility = "visible";
-		});
 	}
 
 
@@ -242,7 +238,7 @@ function getPlatform() {
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.6
+          🖼 Marker Image ver 0.61
 		  screnim video
       </a>
 
