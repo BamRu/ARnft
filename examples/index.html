@@ -248,33 +248,31 @@ var canvas;
 
         function setGlobals() {
 		
-		if(globalsSetup)
-		{
-			TakeScreenshotWrapper();
-		}
-		else
-		{
-			canvas = document.getElementById("canvas");
-			video = document.getElementById('video');
+			if(globalsSetup)
+			{
+				TakeScreenshotWrapper();
+			}
+			else
+			{
+				canvas = document.getElementById("canvas");
+				video = document.getElementById('video');
 
+				photoCanvas = document.getElementById("photoCanvas");
 			
-		
-			photoCanvas = document.getElementById("photoCanvas");
+				photoCanvas.width = canvas.videoWidth;
+				photoCanvas.height = canvas.videoHeight;
+				
 			
-			photoCanvas.width = canvas.videoWidth;
-			photoCanvas.height = canvas.videoHeight;
-			
-			
-			PCContext = photoCanvas.getContext('2d');
-			globalsSetup = true;
-			TakeScreenshotWrapper();
-		}
+				PCContext = photoCanvas.getContext('2d');
+				globalsSetup = true;
+				TakeScreenshotWrapper();
+			}
 		}
 
         function TakeScreenshot() {
             PCContext.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height, 0, 0, photoCanvas.width, photoCanvas.height);
             PCContext.drawImage(canvas, 0, 0, 10, 10, 0, 0, 10, 10);
-            PCContext.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height, 0, 0, photoCanvas.width, photoCanvas.height);
+            //PCContext.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height, 0, 0, photoCanvas.width, photoCanvas.height);
 			/*
 			dx = 0;
 			dy = 0;
@@ -327,7 +325,7 @@ var canvas;
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.629
+          🖼 Marker Image ver 0.630
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
