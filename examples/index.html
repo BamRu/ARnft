@@ -246,10 +246,12 @@ function getPlatform() {
 		photoCanvas.height = canvas.height;
 		
 	
-		html2canvas(document.getElementById('app'), {	
-			PCContext.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height, 0, 0, photoCanvas.width, photoCanvas.height);
-			Canvas2Image.saveAsPNG(photoCanvas);
+		html2canvas(document.getElementById('app'), {
+			onrendered: function(canvas) {		
+				PCContext.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height, 0, 0, photoCanvas.width, photoCanvas.height);
+				Canvas2Image.saveAsPNG(photoCanvas);
 		}
+		});
 	}
 
 </script>    
@@ -270,7 +272,7 @@ function getPlatform() {
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.615
+          🖼 Marker Image ver 0.616
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
