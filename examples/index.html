@@ -247,14 +247,20 @@ function getPlatform() {
 		
 	
 		html2canvas(document.getElementById('app'), {
-			onrendered: function(canvas) {		
+			onrendered: function(canvas) {	
+				retCtx.globalCompositeOperation="destination-over";			
 				PCContext.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height, 0, 0, photoCanvas.width, photoCanvas.height);
 				Canvas2Image.saveAsPNG(photoCanvas);
+				$('#box1').html("");
+				$('#box1').append(canvas);
+				canvas.setAttribute( "id", "model" );
 		}
 		});
 	}
 
-</script>    
+</script> 
+<div id="box1">
+</div>   
 	<button onclick="screen()" style="outline: none; border: none; padding-top: none; padding-bottom: none; padding-left: none; padding-right: none;">
   <img src="t2.png" style="
   position: absolute;
@@ -272,7 +278,7 @@ function getPlatform() {
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.619.
+          🖼 Marker Image ver 0.620
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
