@@ -233,7 +233,7 @@ function getPlatform() {
 	</script>
 -->
 <script>
-var canvas;
+		var canvas;
         var photoCanvas;
         var video;
         var PCContext;
@@ -293,12 +293,10 @@ var canvas;
 				}
 			}
 */
+		canvas2image.saveAsPNG(photoCanvas);
 
-			photoCanvas.toBlob(function(blob) {
-                counter += 1;
-                saveAs(blob, "TestPhoto" + counter.toString());
-                canvas.style.visibility = "visible";
-            });
+        canvas.style.visibility = "visible";
+
         }
 
 
@@ -327,7 +325,7 @@ var canvas;
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.633.
+          🖼 Marker Image ver 0.634
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
