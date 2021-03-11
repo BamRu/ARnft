@@ -242,13 +242,17 @@ function getPlatform() {
 		
 		PCContext = photoCanvas.getContext('2d');
 		
+		video.style.width = photoCanvas.width + 'px';
+		video.style.height = photoCanvas.height + 'px';
+
+		
 		photoCanvas.width = canvas.width;
 		photoCanvas.height = canvas.height;
 		Screenshot();		
 	}
 	
 	function Screenshot(){
-		html2canvas(document.getElementById('app'), {
+		html2canvas(app, {
 			onrendered: function(canvas) {	
 				//retCtx.globalCompositeOperation="destination-over";
 				Canvas2Image.saveAsPNG(canvas);
@@ -281,7 +285,7 @@ function getPlatform() {
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.623
+          🖼 Marker Image ver 0.624
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
