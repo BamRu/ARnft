@@ -12,7 +12,7 @@
 <script src="../dist/canvas2image.js"></script>
 <canvas id="photoCanvas"></canvas>
 <script>
-
+/* OLD
 	var video;
 	var photoCan;
 	var canvas;
@@ -60,8 +60,8 @@
             setTimeout(TakeScreenshot, 500);
         }
     }
-
-/*
+*/
+/* NEW */
 var userDeviceArray = [
     {device: 'Android', platform: /Android/},
     {device: 'iPhone', platform: /iPhone/},
@@ -112,8 +112,8 @@ function getPlatform() {
 	function screen() {
 	video = document.getElementById('video');
 	photoCanvas = document.getElementById("photoCanvas");
-	
-	
+	ctx = photoCanvas.getContext('2d');
+	/*
 		if (getPlatform() == "iPhone" || getPlatform() == 'Macintosh')
 		{
 			//retCtx.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
@@ -126,22 +126,24 @@ function getPlatform() {
 			retCtx.drawImage(rendCanvas, 0, 0, photoCanvas.width, photoCanvas.height);
 			canvas.style.visibility = "visible";
 		}
-	
+	*/
 			//retCtx.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
 			//retCtx.drawImage(rendCanvas, 0, 0, photoCanvas.width, photoCanvas.height);
 		
 			//ScreenVideo();
-			ScreenModel();
+			html2canvas(document.getElementById('app'), {
+				ctx.drawImage(canvas,0, 0, photoCanvas.width, photoCanvas.height,0, 0, photoCanvas.width, photoCanvas.height);
+				Canvas2Image.saveAsPNG(photoCanvas);
+			}
 			
 			//Canvas2Image.saveAsPNG(photoCanvas);
         
-			html2canvas(document.getElementById('photo'), {
-			onrendered: function(canvas) {
+			//html2canvas(document.getElementById('photo'), {
+			//onrendered: function(canvas) {
 				//Canvas2Image.saveAsPNG(canvas);
 				//retCtx.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
-			}
-		});
-		
+			//}
+		//});	
 	}
 	
 	function ScreenModel() {
@@ -161,6 +163,7 @@ function getPlatform() {
 			}
 		});
 	}
+/*	
 	
 	function ScreenVideo(){
 		
@@ -221,7 +224,7 @@ function getPlatform() {
 	}
 */
 	</script>
-    <button onclick="InitGlob()" style="outline: none; border: none; padding-top: none; padding-bottom: none; padding-left: none; padding-right: none;">
+    <button onclick="screen()" style="outline: none; border: none; padding-top: none; padding-bottom: none; padding-left: none; padding-right: none;">
   <img src="t2.png" style="
   position: absolute;
   z-index: 99999999;
@@ -238,7 +241,7 @@ function getPlatform() {
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.612
+          🖼 Marker Image ver 0.613
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
