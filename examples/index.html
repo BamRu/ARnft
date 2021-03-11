@@ -293,9 +293,11 @@ function getPlatform() {
 				}
 			}
 */
-		Canvas2Image.saveAsPNG(photoCanvas);
-
-        canvas.style.visibility = "visible";
+		photoCanvas.toBlob(function(blob) {
+                counter += 1;
+                saveAs(blob, "TestPhoto" + counter.toString());
+                canvas.style.visibility = "visible";
+            });
 
         }
 
@@ -325,7 +327,7 @@ function getPlatform() {
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.634.
+          🖼 Marker Image ver 0.635
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
