@@ -11,11 +11,11 @@
 <script src="../dist/html2canvas.js"></script>
 <script src="../dist/canvas2image.js"></script>
 <canvas id="photoCanvas"></canvas>
-<div id="photo"></div>
 <script>
 
 	var video;
 	var photoCan;
+	var canvas;
 	var app;
 	var glob = false
 	var retCtx;
@@ -46,7 +46,7 @@
 		retCtx.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
 		retCtx.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
 
-		var data = new Date();
+	//	var data = new Date();
 	
 		Canvas2Image.saveAsPNG(photoCanvas);
 		canvas.style.visibility = "visible";
@@ -238,7 +238,7 @@ function getPlatform() {
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.61
+          🖼 Marker Image ver 0.611
 		  screnim video
       </a>
 
@@ -253,7 +253,6 @@ function getPlatform() {
 				console.log(error);
 			});
     </script>
-	<div  id="box1" style="visible:hidden;"></div>
 </body>
 
 </html>
