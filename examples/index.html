@@ -11,6 +11,7 @@
 <script src="../dist/html2canvas.js"></script>
 <script src="../dist/canvas2image.js"></script>
 <canvas id="photoCanvas"></canvas>
+<!--
 <script>
 /* OLD
 	var video;
@@ -134,7 +135,7 @@ function getPlatform() {
 		
 			//ScreenVideo();
 			html2canvas(document.getElementById('app'), {
-				ctx.drawImage(canvas,0, 0, photoCanvas.width, photoCanvas.height,0, 0, photoCanvas.width, photoCanvas.height);
+				ctx.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height, 0, 0, photoCanvas.width, photoCanvas.height);
 				Canvas2Image.saveAsPNG(photoCanvas);
 			}
 			
@@ -226,7 +227,26 @@ function getPlatform() {
 	}
 */
 	</script>
-    <button onclick="screen()" style="outline: none; border: none; padding-top: none; padding-bottom: none; padding-left: none; padding-right: none;">
+-->
+<script>
+
+	var photoCanvas;
+	var ctx;
+	var video;
+	
+	function screen() {
+		video = document.getElementById('video');
+		photoCanvas = document.getElementById("photoCanvas");
+		ctx = photoCanvas.getContext('2d');
+	
+		html2canvas(document.getElementById('app'), {
+			ctx.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height, 0, 0, photoCanvas.width, photoCanvas.height);
+			Canvas2Image.saveAsPNG(photoCanvas);
+		}
+	}
+
+</script>    
+	<button onclick="screen()" style="outline: none; border: none; padding-top: none; padding-bottom: none; padding-left: none; padding-right: none;">
   <img src="t2.png" style="
   position: absolute;
   z-index: 99999999;
@@ -243,7 +263,7 @@ function getPlatform() {
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.614/
+          🖼 Marker Image ver 0.615
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
