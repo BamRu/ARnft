@@ -237,10 +237,11 @@ function getPlatform() {
 	function screen() {
 		video = document.getElementById('video');
 		photoCanvas = document.getElementById("photoCanvas");
-		ctx = photoCanvas.getContext('2d');
+		PCContext = photoCanvas.getContext('2d');
 	
 		html2canvas(document.getElementById('app'), {
-			ctx.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height, 0, 0, photoCanvas.width, photoCanvas.height);
+			PCContext.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height, 0, 0, photoCanvas.width, photoCanvas.height);
+			
 			Canvas2Image.saveAsPNG(photoCanvas);
 		}
 	}
