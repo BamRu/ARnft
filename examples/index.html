@@ -14,6 +14,58 @@
 <div id="photo"></div>
 <script>
 
+	var video;
+	var photoCan;
+	var app;
+	var glob = false
+	var retCtx;
+	
+	function InitGlob{
+		if(glob)
+		{
+			TakeScreenshot();
+		}
+		else
+		{
+			video = document.getElementById("video");
+			canvas = document.getElementById("canvas");
+			photoCanvas = document.getElementById("photoCanvas");
+			app = document.getElementById("app");
+		
+			photoCanvas.width = canvas.width;
+			photoCanvas.height = canvas.height; 
+		
+			retCtx = scrvid.getContext('2d');
+			glob = true;
+			TakeScreenshot();
+		}
+	}
+
+	function TakeScreenshot() {
+		canvas.style.visibility = "hidden";
+		retCtx.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
+		retCtx.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
+
+
+		photoCanvas.toBlob(function(blob) {
+			counter += 1;
+		
+			var data = new Date();
+		
+			saveAs(blob, "Test_photo" + data;
+			canvas.style.visibility = "visible";
+		});
+	}
+
+
+    function TakeScreenshotWrapper() {
+        if (globalsSetup) {
+            canvas.style.visibility = "hidden";
+            setTimeout(TakeScreenshot, 500);
+        }
+    }
+
+/*
 var userDeviceArray = [
     {device: 'Android', platform: /Android/},
     {device: 'iPhone', platform: /iPhone/},
@@ -65,7 +117,7 @@ function getPlatform() {
 	video = document.getElementById('video');
 	photoCanvas = document.getElementById("photoCanvas");
 	
-	/*
+	
 		if (getPlatform() == "iPhone" || getPlatform() == 'Macintosh')
 		{
 			//retCtx.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
@@ -78,7 +130,7 @@ function getPlatform() {
 			retCtx.drawImage(rendCanvas, 0, 0, photoCanvas.width, photoCanvas.height);
 			canvas.style.visibility = "visible";
 		}
-	*/	
+	
 			//retCtx.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
 			//retCtx.drawImage(rendCanvas, 0, 0, photoCanvas.width, photoCanvas.height);
 		
@@ -128,7 +180,7 @@ function getPlatform() {
 	
 		retCtx.drawImage(video, 0, 0, scrvid.width, scrvid.height, 0, 0, scrvid.width, scrvid.height);
 	}
-	/*
+	
 	
 	
 	
@@ -173,7 +225,7 @@ function getPlatform() {
 	}
 */
 	</script>
-    <button onclick="screen()" style="outline: none; border: none; padding-top: none; padding-bottom: none; padding-left: none; padding-right: none;">
+    <button onclick="InitGlob()" style="outline: none; border: none; padding-top: none; padding-bottom: none; padding-left: none; padding-right: none;">
   <img src="t2.png" style="
   position: absolute;
   z-index: 99999999;
@@ -190,7 +242,7 @@ function getPlatform() {
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.573tt
+          🖼 Marker Image ver 0.6
 		  screnim video
       </a>
 
