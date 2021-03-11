@@ -236,9 +236,9 @@ function getPlatform() {
 	var video;
 	
 	function screen() {
-		video = document.getElementById('video');
 		photoCanvas = document.getElementById("photoCanvas");
-		//canvas = document,getElementById('canvas');
+		canvas = document.getElementById("canvas");
+		video = document.getElementById('video');
 		
 		PCContext = photoCanvas.getContext('2d');
 		
@@ -272,7 +272,7 @@ function getPlatform() {
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.618
+          🖼 Marker Image ver 0.619
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
