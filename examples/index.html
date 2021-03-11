@@ -229,46 +229,81 @@ function getPlatform() {
 	</script>
 -->
 <script>
+var canvas;
+        var photoCanvas;
+        var video;
+        var PCContext;
+        var counter = 0;
+		var wp;
+		var hp;
+		var dx = 0;
+		var dy = 0;
+		var part = 16;
+		
+        var globalsSetup = false;
+        //setTimeout(setGlobals, 1200);
 
-	var photoCanvas;
-	var canvas;
-	var ctx;
-	var video;
-	
-	function screen() {
-		photoCanvas = document.getElementById("photoCanvas");
-		canvas = document.getElementById("canvas");
-		video = document.getElementById('video');
+        function setGlobals() {
 		
-		PCContext = photoCanvas.getContext('2d');
-		
-		video.style.width = photoCanvas.width + 'px';
-		video.style.height = photoCanvas.height + 'px';
+		if(globalsSetup)
+		{
+			TakeScreenshotWrapper();
+		}
+		else
+		{
+			canvas = document.getElementById("canvas");
+			video = document.getElementById('video');
 
+			
 		
-		photoCanvas.width = canvas.width;
-		photoCanvas.height = canvas.height;
-		Screenshot();		
-	}
-	
-	function Screenshot(){
-		html2canvas(app, {
-			onrendered: function(canvas) {	
-				//retCtx.globalCompositeOperation="destination-over";
-				Canvas2Image.saveAsPNG(canvas);
-				//PCContext.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height, 0, 0, photoCanvas.width, photoCanvas.height);
-				//$('#box1').html("");
-				//$('#box1').append(canvas);
-				//canvas.setAttribute( "id", "model" );
-				//Canvas2Image.saveAsPNG(document.getElementById("model"));
+			photoCanvas = document.getElementById("photoCanvas");
+			
+			photoCanvas.width = video.videoWidth;
+			photoCanvas.height = video.videoHeight;
+			
+			
+			PCContext = photoCanvas.getContext('2d');
+			globalsSetup = true;
+			TakeScreenshotWrapper();
+		}
+		}
+
+        function TakeScreenshot() {
+            PCContext.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
+            PCContext.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
+			/*
+			dx = 0;
+			dy = 0;
+            //PCContext.drawImage(canvas, dx, dy, photoCanvas.width, photoCanvas.height);
+			
+		
+			wp=Math.trunc(document.documentElement.windowWidth/part);
+			hp=Math.trunc(document.documentElement.windowHeight/part);
+			
+			for (let i = 0; i < part; i++) { 
+				dy = i * hp; 
+				for (let j = 0; j < part; j++) { 
+					dx = j * wp; 
+					PCContext.drawImage(canvas, dx, dy, wp, hp,
+												dx, dy, wp, hp);
+				}
 			}
-		});
-	}
+*/
 
+			canvas2image.saveAsPNG(photoCanvas);
+            canvas.style.visibility = "visible";
+        }
+
+
+        function TakeScreenshotWrapper() {
+            if (globalsSetup) {
+                canvas.style.visibility = "hidden";
+                setTimeout(TakeScreenshot, 200);
+            }
+        }
 </script> 
-<div id="box1">
 </div>   
-	<button onclick="screen()" style="outline: none; border: none; padding-top: none; padding-bottom: none; padding-left: none; padding-right: none;">
+	<button onclick="setGlobals()" style="outline: none; border: none; padding-top: none; padding-bottom: none; padding-left: none; padding-right: none;">
   <img src="t2.png" style="
   position: absolute;
   z-index: 99999999;
@@ -285,7 +320,7 @@ function getPlatform() {
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.624
+          🖼 Marker Image ver 0.625
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
