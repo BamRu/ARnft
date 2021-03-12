@@ -274,8 +274,8 @@ function getPlatform() {
 
         function TakeScreenshot() {
             PCContext.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
-            //PCContext.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
-			
+            PCContext.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
+			/*
 			dx = 0;
 			dy = 0;
             //PCContext.drawImage(canvas, dx, dy, photoCanvas.width, photoCanvas.height);
@@ -292,7 +292,7 @@ function getPlatform() {
 												dx, dy, wp, hp);
 				}
 			}
-	
+	*/
 
             photoCanvas.toBlob(function(blob) {
                 counter += 1;
@@ -327,7 +327,7 @@ function getPlatform() {
           href="Data/wall.png"
           class="ui marker"
           target="_blank">
-          🖼 Marker Image ver 0.636
+          🖼 Marker Image ver 0.637
       </a>
 
 		<script src="./js/third_party/three.js/three.min.js"></script>
