@@ -211,7 +211,7 @@ function getPlatform() {
 			}
 		});
 	}
-	
+
 	function genScreenshot() {
 		html2canvas(document.getElementById('app'), {
 			onrendered: function(canvas) {
@@ -219,6 +219,7 @@ function getPlatform() {
 			}
 		});
 	}
+
 	
 	
 	
@@ -274,7 +275,14 @@ function getPlatform() {
 
         function TakeScreenshot() {
             PCContext.drawImage(video, 0, 0, photoCanvas.width, photoCanvas.height);
-            PCContext.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
+			
+			html2canvas(document.getElementById('app'), {
+			onrendered: function(canvas) {
+				PCContext.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
+				}
+			});
+			
+            //PCContext.drawImage(canvas, 0, 0, photoCanvas.width, photoCanvas.height);
 			/*
 			dx = 0;
 			dy = 0;
